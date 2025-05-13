@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAG System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Retrieval-Augmented Generation System</h1>
+
+    <form method="post" enctype="multipart/form-data" id="rag-form">
+        <div class="form-group">
+            <label for="keyword">Keyword (for WeChat scraping):</label>
+            <input type="text" id="keyword" name="keyword">
+        </div>
+
+        <div class="form-group">
+            <label for="file">Upload PDFs:</label>
+            <input type="file" id="file" name="file" accept=".pdf" multiple>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+
+    <form id="question-form">
+        <div class="form-group">
+            <label for="question">Ask a question:</label>
+            <input type="text" id="question" name="question" required>
+        </div>
+        <button type="submit">Get Answer</button>
+    </form>
+
+    <div id="answer-container">
+        <h2>Answer:</h2>
+        <div id="answer"></div>
+    </div>
+
+    <script>
+        document.getElementById('rag-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch('/process', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Processing complete!');
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+        document.getElementById('question-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const question = document.getElementById('question').value;
+
+            fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ question: question })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('answer').innerHTML = data.answer;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
