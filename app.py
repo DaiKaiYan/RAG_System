@@ -12,7 +12,7 @@ from zhipuai import ZhipuAI
 from scraper import WechatScraper
 
 
-client = ZhipuAI(api_key="your_api_key")
+client = ZhipuAI(api_key="your_api_key") # Remember replace the api key with your real api key
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
