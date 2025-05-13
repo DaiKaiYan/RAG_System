@@ -28,6 +28,6 @@ RAG System/
 ## Run Project
 
 ```bash
-python app.py
+python app.py # Remember replace the api key with your real api key
 ```
 Open your browser and navigate to http://127.0.0.1:5000
