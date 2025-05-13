@@ -12,7 +12,7 @@ This project implements a website-based RAG system that combines data from live 
 - **Question Answering**: Retrieve relevant text chunks using FAISS and generate answers with the ChatGLM API
 
 ## Project Structure
-
+```
 RAG System/
 ├── app.py                     # Main Flask application
 ├── scraper.py          # WeChat scraping module
@@ -23,6 +23,7 @@ RAG System/
 ├── uploads/                   # Store uploaded PDFs
 ├── scraped/                   # Store temporary scraped articles
 └── FAISS files/               # Store FAISS index and related files
+```
 
 ## Run Project
 
