@@ -15,7 +15,7 @@ This project implements a website-based RAG system that combines data from live 
 ```
 RAG System/
 ├── app.py                     # Main Flask application
-├── scraper.py          # WeChat scraping module
+├── scraper.py                 # WeChat scraping module
 ├── templates/
 │   └── index.html             # Main webpage
 ├── static/
